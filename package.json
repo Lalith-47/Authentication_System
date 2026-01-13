@@ -1,0 +1,28 @@
+{
+  "name": "login-system",
+  "version": "1.0.0",
+  "description": "A playground backend project to explore modern authentication systems using Node.js, Express, OAuth, sessions, and secure password handling.",
+  "license": "MIT",
+  "author": "Lalith",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "chalk": "^5.6.2",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "mongoose": "^9.1.3",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-microsoft": "^2.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
