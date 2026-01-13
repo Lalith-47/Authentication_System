@@ -1,5 +1,4 @@
 import User from "../models/User.js";
-import session from "express-session";
 export const signup = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -39,4 +38,14 @@ export const login = async (req, res) => {
   } catch (err) {
     res.status(400).json({ err: err.message, message: "Invalid credentials" });
   }
+};
+export const logout = (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).json({ message: "Logout failed" });
+    }
+
+    res.clearCookie("connect.sid");
+    return res.status(200).json({ message: "Logged out" });
+  });
 };

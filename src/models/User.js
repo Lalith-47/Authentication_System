@@ -2,6 +2,11 @@ import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
 const schema = new Schema(
   {
+    githubId: {
+      type: String,
+      unique: true,
+      sparse: true,
+    },
     email: {
       type: String,
       required: true,
@@ -9,7 +14,9 @@ const schema = new Schema(
     },
     password: {
       type: String,
-      required: true,
+      required: function () {
+        return !this.githubId;
+      },
     },
     role: {
       type: String,

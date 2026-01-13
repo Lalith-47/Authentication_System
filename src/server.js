@@ -5,18 +5,21 @@ import session from "express-session";
 import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/auth.routes.js";
 import { validate } from "./middleware/auth.middleware.js";
+import passport from "./config/passport.js";
 const app = express();
 app.use(express.json());
 await connectDB();
-
 app.use(
   session({
+    name: "connect.sid",
     secret: process.env.SECRET,
     saveUninitialized: false,
     resave: false,
   })
 );
-app.get("/health", (req, res) => {
+app.use(passport.initialize());
+app.use(passport.session());
+app.get("/", (req, res) => {
   res.status(200).json({
     status: "OK",
   });
